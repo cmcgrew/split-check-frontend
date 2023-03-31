@@ -1,12 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ConfirmationScreen from './screens/ConfirmationScreen';
+import HomeScreen from './screens/HomeScreen';
+import ScanPreviewScreen from './screens/ScanPreview';
+import ShareLinkScreen from './screens/ShareLinkScreen';
+import TaxScreen from './screens/TaxScreen';
+import CameraScreen from './screens/CameraScreen';
+
+const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Camera" component={CameraScreen} />
+        <Stack.Screen name="ScanPreview" component={ScanPreviewScreen} />
+        <Stack.Screen name="Tax" component={TaxScreen} />
+        <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
+        <Stack.Screen name="ShareLink" component={ShareLinkScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+    
   );
 }
 
